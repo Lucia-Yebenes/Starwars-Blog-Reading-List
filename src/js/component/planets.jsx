@@ -1,8 +1,8 @@
 import React from "react";
-import personaje from "../../img/personajes.jpg";
+import planeta from "../../img/planeta.jpg";
 import PropTypes from "prop-types";
 
-const Character = props => {
+const Planets = props => {
 	const styles = {
 		maxwidth: "18rem"
 	};
@@ -11,7 +11,7 @@ const Character = props => {
 		<div className="col-lg-3 col-md-12 mx-auto">
 			<div className="card card-block" style={styles}>
 				<div className="card-header">
-					<img src={personaje} className="card-img-top img-fluid" alt="Imagen" />
+					<img src={planeta} className="card-img-top img-fluid" alt="Imagen" />
 				</div>
 				<div className="card-body">
 					<h5 className="card-title text-white">{props.name}</h5>
@@ -30,8 +30,9 @@ const Character = props => {
 		</div>
 	);
 };
-Character.propTypes = {
+Planets.propTypes = {
 	name: PropTypes.string,
 	buttonUrl: PropTypes.string
 };
-export default Character;
+
+export default Planets;

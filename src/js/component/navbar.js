@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import starwars from "../../img/star-wars-white.png";
+import starwars from "../../img/star-wars-anaranjado.png";
 
 export const Navbar = () => {
 	return (
@@ -12,9 +12,7 @@ export const Navbar = () => {
 			</Link>
 			<div className="ml-auto">
 				<Link to="/demo">
-					<button className="btn btn-primary bg-transparent border-0">
-						<i className="fas fa-heart text-white" /> 0
-					</button>
+					<button className="btnNav btn btn-primary bg-transparent border-0">FAVOURITE 0</button>
 				</Link>
 			</div>
 		</nav>

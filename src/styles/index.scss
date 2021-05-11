@@ -3,8 +3,22 @@
 */
 body{
     background: linear-gradient(0, #3573A1, #0D062D);
+    font-family: 'Stardos Stencil', cursive;
 }
 /*.starwars{
     width: 10px; height: 10px;
 }*/
 
+h1{
+    font-family: 'Press Start 2P', cursive;
+    font-size: 20px;
+    color: #E27812;
+}
+.card{
+    background: linear-gradient(0,  #0D062D, #9E0B0E);
+}
+.btnNav{
+    font-family: 'Press Start 2P', cursive;
+    color: #E27812;
+    font-size: 15px;
+}
