@@ -14,7 +14,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			],
 			personajes: [],
-			planetas: []
+			planetas: [],
+			favourites: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -31,6 +32,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(resp => resp.json())
 					.then(data => setStore({ planetas: data.results }))
 					.catch(error => console.log(error));
+			},
+			addfavourites: (index, name) => {
+				const store = getStore();
+				const filter = store.favourites.filter(item => item.name === name);
+				if (filter.length === 0) {
+					let newfavouritesItem = {
+						uid: index,
+						name: name
+					};
+					const newfavouritesItemList = [...store.favourites, newfavouritesItem];
+					setStore({ favourites: newfavouritesItemList });
+				}
+			},
+			delTofavourites: name => {
+				const store = getStore();
+				const filter = store.favourites.filter(item => item.name === name);
+				setStore({ favourites: filter });
 			},
 			changeColor: (index, color) => {
 				//get the store

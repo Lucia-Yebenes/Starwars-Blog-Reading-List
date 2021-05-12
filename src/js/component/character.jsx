@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import personaje from "../../img/personajes.jpg";
 import PropTypes from "prop-types";
-
+import { Context } from "../store/appContext";
 const Character = props => {
+	const { store, actions } = useContext(Context);
 	const styles = {
 		maxwidth: "18rem"
 	};
@@ -23,7 +24,10 @@ const Character = props => {
 						Learn more!
 					</a>
 					<a href="#" className="btn btn-danger">
-						<i className="fas fa-heart text-white" />
+						<i
+							onClick={() => actions.addfavourites(props.key, props.name)}
+							className="fas fa-heart text-white"
+						/>
 					</a>
 				</div>
 			</div>
@@ -32,6 +36,7 @@ const Character = props => {
 };
 Character.propTypes = {
 	name: PropTypes.string,
-	buttonUrl: PropTypes.string
+	buttonUrl: PropTypes.string,
+	key: PropTypes.number
 };
 export default Character;
