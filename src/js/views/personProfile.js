@@ -11,7 +11,7 @@ const PersonProfile = () => {
 	const styles = {
 		maxwidth: "540px"
 	};
-	console.log(store.characterDetails);
+	//console.log(store.characterDetails.gender);
 
 	useEffect(() => {
 		actions.loadCharacterDetails("https://www.swapi.tech/api/people/" + params.uid);
@@ -26,15 +26,14 @@ const PersonProfile = () => {
 					</div>
 					<div className="col-md-8">
 						<div className="card-body">
-							<h5 className="card-title">Name:</h5>
-							<p className="card-text">Height:</p>
-							<p className="card-text">Mass:</p>
-							<p className="card-text">Hair Color:</p>
-							<p className="card-text">Skin Color:</p>
-							<p className="card-text">Eye Color:</p>
-							<p className="card-text">Birth Year:</p>
-							<p className="card-text">Created:</p>
-							<p className="card-text">Edited:</p>
+							<h5 className="card-title text-white">{store.characterDetails.name}</h5>
+							{Object.entries(store.characterDetails).map(([key, value], i) => {
+								return (
+									<p key={i} className="card-text text-white">
+										{key.toUpperCase()}:{value}
+									</p>
+								);
+							})}
 						</div>
 					</div>
 				</div>
