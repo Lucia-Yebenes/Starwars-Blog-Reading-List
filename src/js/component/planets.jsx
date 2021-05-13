@@ -19,7 +19,7 @@ const Planets = props => {
 					<p className="card-text text-white">Terrain</p>
 				</div>
 				<div className="card-footer">
-					<a href={props.buttonUrl} className="btn btn-danger">
+					<a href={props.url} className="btn btn-danger">
 						Learn more!
 					</a>
 					<a href="#" className="btn btn-danger">
@@ -32,7 +32,7 @@ const Planets = props => {
 };
 Planets.propTypes = {
 	name: PropTypes.string,
-	buttonUrl: PropTypes.string
+	url: PropTypes.string
 };
 
 export default Planets;

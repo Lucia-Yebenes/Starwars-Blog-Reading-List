@@ -7,13 +7,14 @@ import { Context } from "../store/appContext";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
+	console.log(store.personajes);
 	return (
 		<div>
 			<div className="mx-3">
 				<h1>CHARACTER</h1>
 				<div className="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2">
 					{store.personajes.map((item, i) => {
-						return <Character key={i} name={item.name} buttonUrl={item.buttonUrl} />;
+						return <Character key={i} name={item.name} uid={item.uid} />;
 					})}
 				</div>
 			</div>
@@ -21,7 +22,7 @@ export const Home = () => {
 				<h1>PLANETS</h1>
 				<div className="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2">
 					{store.planetas.map((item, i) => {
-						return <Planets key={i} name={item.name} buttonUrl={item.buttonUrl} />;
+						return <Planets key={i} name={item.name} uid={item.uid} />;
 					})}
 				</div>
 			</div>

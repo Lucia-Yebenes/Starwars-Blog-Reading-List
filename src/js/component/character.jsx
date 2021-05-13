@@ -1,13 +1,15 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import personaje from "../../img/personajes.jpg";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
+//import personProfile from "../views/personProfile";
 const Character = props => {
 	const { store, actions } = useContext(Context);
 	const styles = {
 		maxwidth: "18rem"
 	};
-
+	console.log(props.uid);
 	return (
 		<div className="col-lg-3 col-md-12 mx-auto">
 			<div className="card card-block" style={styles}>
@@ -20,9 +22,9 @@ const Character = props => {
 					<p className="card-text text-white">Terrain</p>
 				</div>
 				<div className="card-footer">
-					<a href={props.buttonUrl} className="btn btn-danger">
-						Learn more!
-					</a>
+					<Link to={"/personProfile/" + props.uid} className="btn btn-danger">
+						<span>Learn more!</span>
+					</Link>
 					<a href="#" className="btn btn-danger">
 						<i
 							onClick={() => actions.addfavourites(props.key, props.name)}
@@ -36,7 +38,7 @@ const Character = props => {
 };
 Character.propTypes = {
 	name: PropTypes.string,
-	buttonUrl: PropTypes.string,
+	uid: PropTypes.string,
 	key: PropTypes.number
 };
 export default Character;
