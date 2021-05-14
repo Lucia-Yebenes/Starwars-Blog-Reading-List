@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import planeta from "../../img/planeta.jpg";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 const Planets = props => {
+	const { store, actions } = useContext(Context);
 	const styles = {
 		maxwidth: "18rem"
 	};
@@ -19,9 +22,9 @@ const Planets = props => {
 					<p className="card-text text-white">Terrain</p>
 				</div>
 				<div className="card-footer">
-					<a href={props.url} className="btn btn-danger">
-						Learn more!
-					</a>
+					<Link to={"/planetProfile/" + props.uid} className="btn btn-danger">
+						<span>Learn more!</span>
+					</Link>
 					<a href="#" className="btn btn-danger">
 						<i className="fas fa-heart text-white" />
 					</a>
@@ -32,7 +35,8 @@ const Planets = props => {
 };
 Planets.propTypes = {
 	name: PropTypes.string,
-	url: PropTypes.string
+	uid: PropTypes.string,
+	key: PropTypes.number
 };
 
 export default Planets;

@@ -16,7 +16,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			personajes: [],
 			planetas: [],
 			favourites: [],
-			characterDetails: {}
+			characterDetails: {},
+			planetsDetails: {}
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -40,7 +41,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => setStore({ characterDetails: data.result.properties }))
 					.catch(error => console.log(error));
 			},
-
+			loadPlanetsDetails: url => {
+				fetch(url)
+					.then(resp => resp.json())
+					.then(data => setStore({ planetsDetails: data.result.properties }))
+					.catch(error => console.log(error));
+			},
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
