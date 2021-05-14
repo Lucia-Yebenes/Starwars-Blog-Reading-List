@@ -21,7 +21,7 @@ export const Planets = props => {
 					<p className="card-text text-white">Terrain</p>
 				</div>
 				<div className="card-footer">
-					<Link to={"/planetProfile/" + props.uid} className="btn btn-danger">
+					<Link to={"/planetProfile/" + actions.findIndexInPlanets(props.name)} className="btn btn-danger">
 						<span>Learn more!</span>s
 					</Link>
 					<a href="#" className="btn btn-danger">

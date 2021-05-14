@@ -11,6 +11,7 @@ export const PlanetProfile = () => {
 	const styles = {
 		maxwidth: "540px"
 	};
+	console.log(store.planetsDetails);
 	useEffect(() => {
 		actions.loadPlanetsDetails(store.planetas[params.uid].url);
 	}, []);

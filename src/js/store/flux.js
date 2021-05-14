@@ -60,6 +60,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				});
 				return result;
+			},
+			findIndexInPlanets: name => {
+				const store = getStore();
+				var result = -1;
+				store.planetas.some(function(item, i) {
+					if (item.name === name) {
+						result = i;
+						return true;
+					}
+				});
+				return result;
 			}
 		}
 	};

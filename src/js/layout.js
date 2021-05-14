@@ -27,7 +27,7 @@ const Layout = () => {
 							<PersonProfile />
 						</Route>
 						<Route exact path="/planetProfile/:uid">
-							<PersonProfile />
+							<PlanetProfile />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
