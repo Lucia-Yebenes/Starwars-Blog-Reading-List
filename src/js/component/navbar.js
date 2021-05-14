@@ -5,6 +5,10 @@ import { Context } from "../store/appContext";
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
+	const style = {
+		float: "left",
+		display: "flex"
+	};
 	return (
 		<nav className="navbar navbar-light mb-3 bg-transparent">
 			<Link to="/">
@@ -26,18 +30,33 @@ export const Navbar = () => {
 						{store.favourites.map((item, index) => {
 							return (
 								<li key={`${index}`}>
-									<div>
-										<span className="dropdown-item">
-											<Link to={"/personProfile/" + actions.findIndexInCharacter(item.name)}>
-												{item.name}
-											</Link>
-										</span>
-										<span
-											className="dropdown-item"
-											onClick={() => actions.delToFavorites(item.name)}>
-											<i className="fa fa-trash float-right" aria-hidden="true" />
-										</span>
-									</div>
+									{item.type === "C" ? (
+										<div style={style}>
+											<span className="dropdown-item">
+												<Link to={"/personProfile/" + actions.findIndexInCharacter(item.name)}>
+													{item.name}
+												</Link>
+											</span>
+											<span
+												className="dropdown-item"
+												onClick={() => actions.delTofavourites(item.name)}>
+												<i className="fa fa-trash float-right" aria-hidden="true" />
+											</span>
+										</div>
+									) : (
+										<div style={style}>
+											<span className="dropdown-item">
+												<Link to={"/planetProfile/" + actions.findIndexInPlanets(item.name)}>
+													{item.name}
+												</Link>
+											</span>
+											<span
+												className="dropdown-item"
+												onClick={() => actions.delTofavourites(item.name)}>
+												<i className="fa fa-trash float-right" aria-hidden="true" />
+											</span>
+										</div>
+									)}
 								</li>
 							);
 						})}

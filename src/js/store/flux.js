@@ -47,7 +47,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			delTofavourites: name => {
 				const store = getStore();
-				const filter = store.favourites.filter(item => item.name === name);
+				const filter = store.favourites.filter(item => item.name !== name);
 				setStore({ favourites: filter });
 			},
 			findIndexInCharacter: name => {
