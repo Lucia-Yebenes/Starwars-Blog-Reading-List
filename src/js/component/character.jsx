@@ -3,13 +3,12 @@ import { Link } from "react-router-dom";
 import personaje from "../../img/personajes.jpg";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
-//import personProfile from "../views/personProfile";
-const Character = props => {
+//import {personProfile} from "../views/personProfile";
+export const Character = props => {
 	const { store, actions } = useContext(Context);
 	const styles = {
 		maxwidth: "18rem"
 	};
-	console.log(props.uid);
 	return (
 		<div className="col-lg-3 col-md-12 mx-auto">
 			<div className="card card-block" style={styles}>
@@ -22,23 +21,23 @@ const Character = props => {
 					<p className="card-text text-white">Terrain</p>
 				</div>
 				<div className="card-footer">
-					<Link to={"/personProfile/" + props.uid} className="btn btn-danger">
+					<Link to={"/personProfile/" + actions.findIndexInCharacter(props.name)} className="btn btn-danger">
 						<span>Learn more!</span>
 					</Link>
-					<a href="#" className="btn btn-danger">
+					<button className="btn btn-danger">
 						<i
-							onClick={() => actions.addfavourites(props.key, props.name)}
+							onClick={() => actions.addfavourites(props.key, props.name, props.type)}
 							className="fas fa-heart text-white"
 						/>
-					</a>
+					</button>
 				</div>
 			</div>
 		</div>
 	);
 };
 Character.propTypes = {
-	name: PropTypes.string,
 	uid: PropTypes.string,
-	key: PropTypes.number
+	name: PropTypes.string,
+	key: PropTypes.number,
+	type: PropTypes.string
 };
-export default Character;

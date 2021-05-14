@@ -5,16 +5,14 @@ import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import planeta from "../../img/planeta.jpg";
 
-const PlanetProfile = () => {
+export const PlanetProfile = () => {
 	const { store, actions } = useContext(Context);
 	const params = useParams();
 	const styles = {
 		maxwidth: "540px"
 	};
-	console.log(store.planetsDetails);
-
 	useEffect(() => {
-		actions.loadPlanetsDetails("https://www.swapi.tech/api/planets/" + params.uid);
+		actions.loadPlanetsDetails(store.planetas[params.uid].url);
 	}, []);
 
 	return (
@@ -48,5 +46,3 @@ const PlanetProfile = () => {
 		</div>
 	);
 };
-
-export default PlanetProfile;

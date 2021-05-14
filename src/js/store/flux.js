@@ -1,18 +1,6 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			],
 			personajes: [],
 			planetas: [],
 			favourites: [],
@@ -20,10 +8,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			planetsDetails: {}
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
 			loadSomeData: () => {
 				fetch("https://www.swapi.tech/api/people/")
 					.then(resp => resp.json())
@@ -36,6 +20,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.log(error));
 			},
 			loadCharacterDetails: url => {
+				console.log(url);
 				fetch(url)
 					.then(resp => resp.json())
 					.then(data => setStore({ characterDetails: data.result.properties }))
@@ -47,16 +32,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => setStore({ planetsDetails: data.result.properties }))
 					.catch(error => console.log(error));
 			},
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
-			addfavourites: (index, name) => {
+			addfavourites: (index, name, type) => {
 				const store = getStore();
-				const filter = store.favourites.filter(item => item.name === name);
+				const filter = store.favourites.filter(item => item.name === name && item.type === type);
 				if (filter.length === 0) {
 					let newfavouritesItem = {
 						uid: index,
-						name: name
+						name: name,
+						type: type
 					};
 					const newfavouritesItemList = [...store.favourites, newfavouritesItem];
 					setStore({ favourites: newfavouritesItemList });
@@ -66,6 +49,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const store = getStore();
 				const filter = store.favourites.filter(item => item.name === name);
 				setStore({ favourites: filter });
+			},
+			findIndexInCharacter: name => {
+				const store = getStore();
+				var result = -1;
+				store.personajes.some(function(item, i) {
+					if (item.name === name) {
+						result = i;
+						return true;
+					}
+				});
+				return result;
 			}
 		}
 	};

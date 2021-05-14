@@ -4,12 +4,11 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-const Planets = props => {
+export const Planets = props => {
 	const { store, actions } = useContext(Context);
 	const styles = {
 		maxwidth: "18rem"
 	};
-
 	return (
 		<div className="col-lg-3 col-md-12 mx-auto">
 			<div className="card card-block" style={styles}>
@@ -23,10 +22,13 @@ const Planets = props => {
 				</div>
 				<div className="card-footer">
 					<Link to={"/planetProfile/" + props.uid} className="btn btn-danger">
-						<span>Learn more!</span>
+						<span>Learn more!</span>s
 					</Link>
 					<a href="#" className="btn btn-danger">
-						<i className="fas fa-heart text-white" />
+						<i
+							onClick={() => actions.addfavourites(props.key, props.name, props.type)}
+							className="fas fa-heart text-white"
+						/>
 					</a>
 				</div>
 			</div>
@@ -34,9 +36,8 @@ const Planets = props => {
 	);
 };
 Planets.propTypes = {
-	name: PropTypes.string,
 	uid: PropTypes.string,
-	key: PropTypes.number
+	name: PropTypes.string,
+	key: PropTypes.number,
+	type: PropTypes.string
 };
-
-export default Planets;

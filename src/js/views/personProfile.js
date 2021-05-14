@@ -5,7 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import personaje from "../../img/personajes.jpg";
 
-const PersonProfile = () => {
+export const PersonProfile = () => {
 	const { store, actions } = useContext(Context);
 	const params = useParams();
 	const styles = {
@@ -14,9 +14,9 @@ const PersonProfile = () => {
 	//console.log(store.characterDetails.gender);
 
 	useEffect(() => {
-		actions.loadCharacterDetails("https://www.swapi.tech/api/people/" + params.uid);
+		actions.loadCharacterDetails(store.personajes[params.uid].url);
 	}, []);
-
+	console.log(params.uid);
 	return (
 		<div>
 			<div className="card p-0 col-8 m-auto" style={styles}>
@@ -41,5 +41,3 @@ const PersonProfile = () => {
 		</div>
 	);
 };
-
-export default PersonProfile;
